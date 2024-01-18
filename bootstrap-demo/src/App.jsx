@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
+import AddTodoModal from './components/AddTodoModal';
 
 const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
@@ -21,6 +21,8 @@ function App() {
         <div>
             <Header />
             <TodoList todos={todos} />
+            <AddTodoModal />
+
         </div>
 
     );

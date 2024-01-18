@@ -1,4 +1,5 @@
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button'
 import TodoItem from './TodoItem';
 
 export default function TodoList({
@@ -11,6 +12,7 @@ export default function TodoList({
                 {todos.map(x => <TodoItem key={x._id} {...x} />)}
 
             </ListGroup>
+            <Button variant="primary">Add</Button>
         </div>
     );
 }
