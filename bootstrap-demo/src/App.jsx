@@ -17,11 +17,24 @@ function App() {
             });
     }, []);
 
+    const onTodoAddSubmit = async (values) => {
+        console.log(values);
+        const response = await fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(values)
+        });
+        const result = await response.json();
+        console.log(result);
+    };
+
     return (
         <div>
             <Header />
             <TodoList todos={todos} />
-            <AddTodoModal />
+            <AddTodoModal onTodoAddSubmit={onTodoAddSubmit} />
 
         </div>
 

@@ -6,8 +6,10 @@ import Form from 'react-bootstrap/Form';
 
 import { useForm } from '../hooks/useForm';
 
-export default function AddTodoModal() {
-    const { formValues, onChangeHandler, onSubmit } = useForm({ text: '' }, (values) => { console.log(values) });
+export default function AddTodoModal({
+    onTodoAddSubmit,
+}) {
+    const { formValues, onChangeHandler, onSubmit } = useForm({ text: '' }, onTodoAddSubmit);
 
     // const [formValues, setFormValues] = useState({
     //     text: ''
