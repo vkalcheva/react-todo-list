@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/esm/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function TodoItem({
@@ -6,8 +7,10 @@ export default function TodoItem({
 }) {
     return (
 
-        <ListGroup.Item action>
+        <ListGroup.Item action style={{display: 'flex', justifyContent: 'space-between'}}>
             {text}
+            <Button variant="dark">X</Button>
         </ListGroup.Item>
+
     );
 };

@@ -9,6 +9,7 @@ import { useForm } from '../hooks/useForm';
 export default function AddTodoModal({
     show,
     onTodoAddSubmit,
+    onTodoAddClose,
 }) {
     const { formValues, onChangeHandler, onSubmit } = useForm({ text: '' }, onTodoAddSubmit);
 
@@ -23,7 +24,7 @@ export default function AddTodoModal({
 
     return (
         <Modal show={show}>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onHide={onTodoAddClose}>
                 <Modal.Title>add Todo</Modal.Title>
             </Modal.Header>
 
@@ -34,7 +35,7 @@ export default function AddTodoModal({
                         <Form.Control type="text" name="text" placeholder="Do the dishes" value={formValues.name} onChange={onChangeHandler} />
                     </Form.Group>
                     <Button varian="primary" type='submit' style={{ marginRight: "10px" }}>Submit</Button>
-                    <Button variant="secondary">Close</Button>
+                    <Button variant="secondary" onClick={onTodoAddClose}>Close</Button>
                 </Form>
             </Modal.Body>
 

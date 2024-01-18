@@ -28,18 +28,23 @@ function App() {
             body: JSON.stringify(values)
         });
         const result = await response.json();
-        console.log(result);
+        setShowAddTodo(false);
+        setTodos(state => [...state, result])
     };
 
     const onTodoAddClick = () => {
         setShowAddTodo(true);
     };
 
+    const onTodoAddClose = () => {
+        setShowAddTodo(false);
+    };
+
     return (
         <div>
             <Header />
             <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
-            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} />
+            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
 
         </div>
 
