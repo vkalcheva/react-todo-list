@@ -4,6 +4,7 @@ import TodoItem from './TodoItem';
 
 export default function TodoList({
     todos,
+    onTodoAddClick,
 }) {
     return (
         <div style={{ width: '30%', margin: '10px auto' }}>
@@ -12,7 +13,7 @@ export default function TodoList({
                 {todos.map(x => <TodoItem key={x._id} {...x} />)}
 
             </ListGroup>
-            <Button variant="primary">Add</Button>
+            <Button variant="primary" onClick={onTodoAddClick}>Add</Button>
         </div>
     );
 }

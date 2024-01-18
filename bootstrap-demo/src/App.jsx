@@ -8,6 +8,7 @@ const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
 function App() {
     const [todos, setTodos] = useState([]);
+    const [showAddTodo, setShowAddTodo] = useState(false);
 
     useEffect(() => {
         fetch(baseUrl)
@@ -30,11 +31,15 @@ function App() {
         console.log(result);
     };
 
+    const onTodoAddClick = () => {
+        setShowAddTodo(true);
+    };
+
     return (
         <div>
             <Header />
-            <TodoList todos={todos} />
-            <AddTodoModal onTodoAddSubmit={onTodoAddSubmit} />
+            <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
+            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} />
 
         </div>
 

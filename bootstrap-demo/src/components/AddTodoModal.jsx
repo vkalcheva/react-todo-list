@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from '../hooks/useForm';
 
 export default function AddTodoModal({
+    show,
     onTodoAddSubmit,
 }) {
     const { formValues, onChangeHandler, onSubmit } = useForm({ text: '' }, onTodoAddSubmit);
@@ -21,7 +22,7 @@ export default function AddTodoModal({
 
 
     return (
-        <Modal show={true}>
+        <Modal show={show}>
             <Modal.Header closeButton>
                 <Modal.Title>add Todo</Modal.Title>
             </Modal.Header>
