@@ -7,9 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from '../hooks/useForm';
 
 export default function AddTodoModal() {
-    const { formValues, onChangeHandler } = useForm({
-        text: ''
-    });
+    const { formValues, onChangeHandler, onSubmit } = useForm({ text: '' }, (values) => { console.log(values) });
 
     // const [formValues, setFormValues] = useState({
     //     text: ''
@@ -19,10 +17,6 @@ export default function AddTodoModal() {
     //     setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
     // };
 
-    const onTodoSubmit = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-    };
 
     return (
         <Modal show={true}>
@@ -31,7 +25,7 @@ export default function AddTodoModal() {
             </Modal.Header>
 
             <Modal.Body>
-                <Form onSubmit={onTodoSubmit}>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Todo</Form.Label>
                         <Form.Control type="text" name="text" placeholder="Do the dishes" value={formValues.name} onChange={onChangeHandler} />
