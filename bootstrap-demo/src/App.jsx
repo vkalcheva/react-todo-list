@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+
+import { TodoContext } from './contexts/TodoContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
 import AddTodoModal from './components/AddTodoModal';
+
 
 const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
@@ -45,18 +48,23 @@ function App() {
         setTodos(state => state.filter(x => x._id !== todoId));
     };
 
+    const contextValue = {
+        onTodoDeleteClick
+    };
+
     return (
-        <div>
-            <Header />
-            <TodoList
-                todos={todos}
-                onTodoAddClick={onTodoAddClick}
-                onTodoDeleteClick={onTodoDeleteClick}
+        <TodoContext.Provider value={contextValue}>
+            <div>
+                <Header />
+                <TodoList
+                    todos={todos}
+                    onTodoAddClick={onTodoAddClick}
 
-            />
-            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
+                />
+                <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
 
-        </div>
+            </div>
+        </TodoContext.Provider>
 
     );
 }
